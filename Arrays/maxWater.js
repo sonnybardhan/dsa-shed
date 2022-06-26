@@ -1,18 +1,25 @@
+// function maxWater(arr) {
+//   if (arr.length <= 1) return null;
+//   let maxArea = 0;
+
+//   for (let i = 0; i < arr.length; i++) {
+//     for (let j = 0; j < arr.length; j++) {
+//       if (i === j) continue;
+//       const currArea = Math.min(arr[i], arr[j]) * Math.abs(i - j);
+//       maxArea = Math.max(currArea, maxArea);
+//     }
+//   }
+//   return maxArea > 0 ? maxArea : null;
+// }
+
+//brute force
 function maxWater(arr) {
   if (arr.length <= 1) return null;
   let maxArea = 0;
 
-  // for (let i = 0; i < arr.length; i++) {
-  //   let j = arr.length - 1;
-  //   if (i === j) break;
-  //   const currArea = Math.min(arr[i], arr[j]) * (j - i);
-  //   maxArea = Math.max(currArea, maxArea);
-  // }
-
   for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr.length; j++) {
-      if (i === j) continue;
-      const currArea = Math.min(arr[i], arr[j]) * Math.abs(i - j);
+    for (let j = i + 1; j < arr.length; j++) {
+      let currArea = Math.min(arr[i], arr[j]) * (j - i);
       maxArea = Math.max(currArea, maxArea);
     }
   }
@@ -20,9 +27,10 @@ function maxWater(arr) {
 }
 
 let arr;
-// arr = [7, 10, 9, 3, 6];
+arr = [7, 10, 9, 3, 6];
 // arr = [1, 8, 6, 2, 5, 4, 8, 3, 7];
 // arr = [2, 3, 4, 5, 18, 17, 6];
+// arr = [6, 9, 3, 4, 5, 8];
 
 console.log(maxWater(arr));
 /*
