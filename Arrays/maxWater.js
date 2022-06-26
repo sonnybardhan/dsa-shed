@@ -26,6 +26,10 @@ function maxWater(arr) {
   return maxArea > 0 ? maxArea : null;
 }
 
+// Complexity analysis
+//space - o(1)
+//time - n^2
+
 let arr;
 arr = [7, 10, 9, 3, 6];
 // arr = [1, 8, 6, 2, 5, 4, 8, 3, 7];
