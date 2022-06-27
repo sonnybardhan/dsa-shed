@@ -21,7 +21,8 @@ function maxWater(arr) {
 }
 
 /* Complexity analysis
-
+	space = o(1)
+	time = o(n)
 */
 
 let arr;
