@@ -12,6 +12,7 @@ function buildString(str) {
       temp.pop();
     }
   }
+  // return temp;
   return temp.join('');
 }
 
@@ -23,5 +24,5 @@ function buildString(str) {
  * s: "ab#z"		t: "Az#z" 	false
  *
  */
-console.log(typedOut('ab#z', 'az#z'));
+console.log(typedOut('ab#z', '##az#z'));
 console.log(typedOut('a#z', 'az#z'));
