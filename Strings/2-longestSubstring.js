@@ -46,8 +46,10 @@ let str;
 str = 'cat';
 str = 'abccabb';
 str = 'dvdf';
+str = 'ccc';
 
 // console.log(longestSubstring('abccabb'));
 // console.log(longestSubstring('pwwkew'));
 // console.log(longestSubstring('dvdf'));
-console.log(longestSubstring(' '));
+// console.log(longestSubstring(' '));
+console.log(longestSubstring(str));
