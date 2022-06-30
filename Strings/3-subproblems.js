@@ -1,3 +1,5 @@
+//Recursion
+
 // function isPalindrome(str) {
 //   if (str.length <= 1) return true;
 
@@ -21,17 +23,9 @@ function isPalindrome(str) {
 }
 
 function cleanInput(str) {
-  str = str.toLowerCase();
-  let cleanString = '';
-  let lowerLimit = 'a'.charCodeAt(0);
-  let upperLimit = 'z'.charCodeAt(0);
-  for (let char of str) {
-    let charCode = char.charCodeAt(0);
-    if (charCode >= lowerLimit && charCode <= upperLimit) {
-      cleanString += char;
-    }
-  }
-  return cleanString;
+  str = str.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
+  // console.log(str);
+  return str;
 }
 
 function checkPalindrome(str) {
@@ -43,6 +37,7 @@ let str;
 // str = 'racecar';
 // str = 'rar';
 str = 'raar';
-// str = 'popeyes';
+str = 'popeyes';
+// str = 'A man, a plan, a canal: Panama';
 
 console.log(checkPalindrome(str));
