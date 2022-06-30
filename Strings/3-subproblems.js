@@ -1,9 +1,23 @@
+// function isPalindrome(str) {
+//   if (str.length <= 1) return true;
+
+//   if (str[0] !== str[str.length - 1]) return false;
+
+//   return isPalindrome(str.slice(1, -1));
+// }
+
 function isPalindrome(str) {
-  if (str.length <= 1) return true;
+  let left = 0;
+  let right = str.length - 1;
 
-  if (str[0] !== str[str.length - 1]) return false;
+  while (left < right) {
+    if (str[left] !== str[right]) return false;
 
-  return isPalindrome(str.slice(1, -1));
+    left++;
+    right--;
+  }
+
+  return true;
 }
 
 function cleanInput(str) {
@@ -25,8 +39,10 @@ function checkPalindrome(str) {
 }
 
 let str;
-str = 'a';
-str = 'racecar';
-// str = 'popeye';
+// str = 'a';
+// str = 'racecar';
+// str = 'rar';
+str = 'raar';
+// str = 'popeyes';
 
 console.log(checkPalindrome(str));
