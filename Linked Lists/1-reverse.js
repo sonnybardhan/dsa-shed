@@ -10,6 +10,7 @@ class LinkedList {
     this.head = null;
   }
   insertAtHead(value) {
+    if (!value) return null;
     const node = new Node(value);
     if (!this.head) {
       this.head = node;
@@ -25,6 +26,8 @@ class LinkedList {
     return this;
   }
   insertAtTail(value) {
+    if (!value) return null;
+
     if (!this.head) {
       return this.insertAtHead(value);
     }
@@ -38,11 +41,14 @@ class LinkedList {
     curr.next = node;
     return this;
   }
-  reverse() {
-    if (!this.head) return null;
+  reverse(node = this.head) {
+    if (!node) {
+      console.log('Empty list!');
+      return null;
+    }
 
+    let curr = node;
     let prev = null;
-    let curr = this.head;
     let next;
 
     while (curr) {
@@ -53,8 +59,8 @@ class LinkedList {
     }
 
     this.head = prev;
-    console.log('---PRINTING---');
-    this.printList();
+    // console.log('---PRINTING---');
+    // this.printList();
     return this;
   }
   printList() {
