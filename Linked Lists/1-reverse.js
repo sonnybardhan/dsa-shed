@@ -61,7 +61,7 @@ class LinkedList {
     this.head = prev;
     // console.log('---PRINTING---');
     // this.printList();
-    return this;
+    return this.head;
   }
   printList() {
     if (!this.head) {
