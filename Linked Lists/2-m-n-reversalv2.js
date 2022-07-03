@@ -63,55 +63,50 @@ class LinkedList {
   }
 
   mnReversal(m, n, node = this.head) {
-    if (!node) return null;
+    if (!node) {
+      console.log('Empty list!');
+      return null;
+    }
+    let pos = 1;
+    let start = null;
+    // let start = m === 1 ? this.head : null;
+    let resetHead = m == 1 ? true : false;
+    let tail = null;
 
-    let resetHead = m === 1 ? true : false;
-    let length = n - m + 1;
-    let idx = 1;
     let curr = node;
-    let prev = null;
-    // let next;
+    let listSoFar = null;
+    let next = null;
 
     while (curr) {
-      if (idx === m) {
-        const subList = new LinkedList();
+      if (pos === m - 1) {
+        start = curr;
+      }
 
-        for (let i = 0; i < length; i++) {
-          subList.insertAtHead(curr.value);
-          curr = curr.next;
-        }
-        // subList.next = curr;
-        // console.log(first)
-        // console.log('sublist.next: ', subList, curr);
+      if (pos === m) {
+        tail = curr;
+        while (pos <= n) {
+          if (pos === n && resetHead) {
+            this.head = curr;
+          }
 
-        // console.log('curr: ', curr);
-        // console.log('subList.next: ', curr);
+          next = curr.next;
+          curr.next = listSoFar;
+          listSoFar = curr;
+          curr = next;
 
-        let slCurr = subList.head;
-
-        while (slCurr.next) {
-          slCurr = slCurr.next;
-        }
-
-        slCurr.next = curr;
-
-        if (resetHead) {
-          this.head = subList.head;
-        } else {
-          prev.next = subList.head;
+          pos++; // exits on 6
         }
 
-        // if (curr) {
-        // subList.next = curr;
-        // }
-        console.log('printing main');
+        if (!resetHead) {
+          start.next = listSoFar;
+        }
+
+        tail.next = curr;
         this.printList();
         return this.head;
       }
-
-      idx++;
-      prev = curr;
       curr = curr.next;
+      pos++;
     }
   }
 
@@ -143,7 +138,11 @@ ll.insertAtTail('7');
 // console.log('before');
 // ll.printList();
 
-ll.mnReversal(3, 5);
+// ll.mnReversal(1, 7);
+// ll.mnReversal(2, 5);
+// ll.mnReversal(1, 3);
+ll.mnReversal(3, 7);
+
 // ll.mnReversal(2, 4);
 // console.log('after');
 
