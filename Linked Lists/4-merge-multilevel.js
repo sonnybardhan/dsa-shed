@@ -3,9 +3,9 @@ class Node {
     this.value = value;
     this.previous = null;
     this.next = null;
+    this.child = null;
   }
 }
-
 class DoublyLinkedList {
   cosntructor() {
     this.head = null;
@@ -37,6 +37,24 @@ class DoublyLinkedList {
     // this.tail.next = null;
     return this.head;
   }
+
+  // addChild(parentValue, child){
+  // 	if (!this.head) {
+  //     console.log('Empty list!');
+  //     return null;
+  //   }
+
+  //   let curr = this.head;
+
+  //   while (curr) {
+  //     if(curr.value === parentValue){
+
+  // 		}
+  //     curr = curr.next;
+  //   }
+  //   console.log(str);
+  //   return;
+  // }
 
   removeHead() {
     if (!this.head) {
@@ -91,6 +109,68 @@ class DoublyLinkedList {
     console.log('PRINTING IN REVERSE: ');
     console.log(str);
     return;
+  }
+
+  merge(node = this.head) {
+    if (!node) {
+      console.log('Empty list!');
+      return null;
+    }
+
+    let curr = node;
+    let nextToCurr = [];
+
+    while (curr) {
+      if (curr.child) {
+        nextToCurr.push(curr.next);
+        curr.next = curr.child;
+        curr.child.previous = curr;
+        curr = curr.child;
+      } else if (!curr.next) {
+        if (nextToCurr.length) {
+          const nextNode = nextToCurr.pop();
+          curr.next = nextNode;
+          nextNode.previous = curr;
+          curr = nextNode;
+        } else {
+          return this.head;
+        }
+      } else {
+        curr = curr.next;
+      }
+    }
+
+    return this.head;
+  }
+
+  mergeMultiple(node = this.head) {
+    if (!node) {
+      console.log('Empty list');
+      return null;
+    }
+
+    let curr = node;
+
+    while (curr) {
+      if (curr.child) {
+        let next = curr.next;
+        let child = curr.child;
+        child.previous = curr;
+
+        while (child.next) {
+          child = child.next;
+        }
+
+        child.next = next;
+        next.previous = child;
+
+        curr.next = child;
+        curr.child = null;
+      }
+      curr = curr.next;
+    }
+
+    return node;
   }
 }
 
