@@ -162,7 +162,10 @@ class DoublyLinkedList {
         }
 
         child.next = next;
-        next.previous = child;
+
+        if (next) {
+          next.previous = child;
+        }
 
         curr.next = child;
         curr.child = null;
