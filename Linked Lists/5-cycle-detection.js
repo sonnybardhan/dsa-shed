@@ -74,7 +74,7 @@ class LinkedList {
     }
     return this;
   }
-  detectCycle_1() {
+  detectCycle_floyd() {
     if (!this.head) {
       console.log('Empty list!');
       return false;
@@ -82,17 +82,27 @@ class LinkedList {
     let slow = this.head;
     let fast = this.head;
 
-    while (fast && fast.next) {
+    while (fast || fast.next) {
       if (slow === fast) {
         console.log('Found cycle!');
-        return true;
+        //do something
+        let start = this.head;
+        let meet = slow;
+
+        while (true) {
+          if (slow === meet) {
+            return slow;
+          }
+          slow = slow.next;
+          meet = meet.next;
+        }
       }
       slow = slow.next;
       fast = fast.next.next;
     }
     return false;
   }
-  detectCycle_2() {
+  detectCycle_hash() {
     if (!this.head) {
       console.log('Empty list!');
       return false;
@@ -111,6 +121,22 @@ class LinkedList {
 
     return false;
   }
+  detectCycles_set() {
+    if (!this.head) {
+      console.log('Empty list!');
+      return false;
+    }
+    const seenNodes = new Set();
+    let curr = this.head;
+    while (!seenNodes.has(curr)) {
+      if (!curr.next) {
+        return false;
+      }
+      seenNodes.add(curr);
+      curr = curr.next;
+    }
+    return curr;
+  }
 }
 
 const ll = new LinkedList();
@@ -119,6 +145,10 @@ ll.insertAtTail('1');
 ll.insertAtTail('2');
 ll.insertAtTail('3');
 ll.insertAtTail('4');
+ll.insertAtTail('5');
+ll.insertAtTail('6');
+ll.insertAtTail('7');
+ll.insertAtTail('8');
 // ll.insertAtHead('1');
 // ll.insertAtHead('2');
 // ll.insertAtHead('3');
@@ -128,7 +158,7 @@ ll.insertAtTail('4');
 // console.log('================');
 // ll.printList();
 
-ll.reverse();
+// ll.reverse();
 // console.log('after reversal');
 // console.log('================');
 // ll.printList();
