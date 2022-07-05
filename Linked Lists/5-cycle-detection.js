@@ -84,7 +84,6 @@ class LinkedList {
 
     while (true) {
       if (slow === fast) {
-        //'Found cycle!'
         break;
       }
 
