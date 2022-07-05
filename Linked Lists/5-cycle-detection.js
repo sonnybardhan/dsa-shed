@@ -82,45 +82,32 @@ class LinkedList {
     let slow = this.head;
     let fast = this.head;
 
-    while (fast || fast.next) {
+    while (true) {
       if (slow === fast) {
-        console.log('Found cycle!');
-        //do something
-        let start = this.head;
-        let meet = slow;
-
-        while (true) {
-          if (slow === meet) {
-            return slow;
-          }
-          slow = slow.next;
-          meet = meet.next;
-        }
+        //'Found cycle!'
+        break;
       }
+
       slow = slow.next;
-      fast = fast.next.next;
-    }
-    return false;
-  }
-  detectCycle_hash() {
-    if (!this.head) {
-      console.log('Empty list!');
-      return false;
-    }
-    const nodeHash = {};
-    let curr = this.head;
+      fast = fast.next;
 
-    while (curr) {
-      if (nodeHash[curr.value]) {
-        return curr.value;
+      if (!fast || !fast.next) {
+        return false;
       } else {
-        nodeHash[curr.value] = true;
+        fast = fast.next;
       }
-      curr = curr.next;
     }
 
-    return false;
+    let start = this.head;
+    let mid = slow;
+
+    while (start !== mid) {
+      start = start.next;
+      mid = mid.next;
+    }
+    return start;
   }
+
   detectCycles_set() {
     if (!this.head) {
       console.log('Empty list!');
