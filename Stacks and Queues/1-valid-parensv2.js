@@ -5,7 +5,7 @@ function validParentheses(str) {
   for (let i = 0; i < str.length; i++) {
     const currParen = str[i];
     const lastParen = stack[stack.length - 1];
-    const foundPair = lastParen === complement[currParen];
+    const foundPair = complement[lastParen] === currParen;
 
     if (foundPair) {
       stack.pop();
@@ -21,9 +21,6 @@ const complement = {
   '{': '}',
   '(': ')',
   '[': ']',
-  '}': '{',
-  ']': '[',
-  ')': '(',
 };
 
 let str = '';
@@ -31,7 +28,8 @@ let str = '';
 // str = '[{(}]'; //invalid
 // str = '(([{([[[[{{}}]]]])}]))'; //invalid
 // str = '{([)]}';
+
 // str = '{([]';
-str = '{[]()}';
+// str = '{[]()}';
 
 console.log(validParentheses(str));
