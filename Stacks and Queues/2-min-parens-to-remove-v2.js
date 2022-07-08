@@ -29,5 +29,5 @@ str = '))(('; //abc()d
 
 console.log(minimumParens(str));
 
-// Runtime: 112 ms, faster than 72.70% of JavaScript online submissions for Minimum Remove to Make Valid Parentheses.
-// Memory Usage: 48.5 MB, less than 89.02% of JavaScript online submissions for Minimum Remove to Make Valid Parentheses.
+// Runtime: 91 ms, faster than 93.10% of JavaScript online submissions for Minimum Remove to Make Valid Parentheses.
+// Memory Usage: 48.5 MB, less than 85.25% of JavaScript online submissions for Minimum Remove to Make Valid Parentheses.
