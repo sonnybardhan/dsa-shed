@@ -1,17 +1,14 @@
 function selectionAsc(arr) {
-  let minVal;
   let minIdx;
 
   for (let i = 0; i < arr.length; i++) {
-    minVal = arr[i];
+    minIdx = i;
     for (let j = i; j < arr.length; j++) {
-      if (arr[j] < minVal) {
-        minVal = arr[j];
+      if (arr[j] < arr[minIdx]) {
         minIdx = j;
       }
     }
-    //swap
-    if (minVal < arr[i]) {
+    if (arr[minIdx] < arr[i]) {
       [arr[minIdx], arr[i]] = [arr[i], arr[minIdx]];
     }
   }
@@ -40,4 +37,4 @@ function selectionDesc(arr) {
 
 let arr = [5, 40, 14, 65, -9];
 console.log(selectionAsc(arr));
-console.log(selectionDesc(arr));
+// console.log(selectionDesc(arr));
