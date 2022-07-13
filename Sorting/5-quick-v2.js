@@ -14,23 +14,32 @@ function partition(arr, left, right) {
   let start = left;
   let partition_idx = left;
 
-  while (start < right) {
+  for (let start = left; start < right; start++) {
     if (arr[start] < pivot) {
-      swap(arr, partition_idx, start);
+      swap(arr, start, partition_idx);
       partition_idx++;
     }
-    start++;
   }
+
   swap(arr, partition_idx, right);
   return partition_idx;
 }
 
 function swap(arr, i, j) {
-  [arr[i], arr[j]] = [arr[j], arr[i]];
+  const temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
 }
+// function swap(arr, i, j) {
+//   [arr[i], arr[j]] = [arr[j], arr[i]];
+// }
 
-let arr = [5, 3, 1, 6, 4, 2];
-console.log(quickSort(arr, 0, 5));
+let arr;
+arr = [5, 3, 1, 6, 4, 2];
+arr = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
+let left = 0;
+let right = arr.length - 1;
+console.log(quickSort(arr, left, right));
 // console.log(partition(arr, 0, 5));
 
 // function quickSort(arr, left, right) {
