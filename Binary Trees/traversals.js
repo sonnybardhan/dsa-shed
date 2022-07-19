@@ -126,4 +126,39 @@ class BinaryTree {
 
     return order;
   }
+
+  rightSideView(node) {
+    if (!node) return [];
+
+    const q = [node];
+    const view = [];
+
+    while (q.length) {
+      let len = q.length;
+      let count = 0;
+      let rightMost;
+
+      while (count < len) {
+        const currNode = q.shift();
+
+        //be careful of implicit checks
+        if (currNode.value != null) {
+          rightMost = currNode.value;
+        }
+
+        if (currNode.left) {
+          q.push(currNode.left);
+        }
+
+        if (currNode.right) {
+          q.push(currNode.right);
+        }
+
+        count++;
+      }
+      view.push(rightMost);
+    }
+
+    return view;
+  }
 }
