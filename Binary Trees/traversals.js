@@ -186,4 +186,34 @@ class BinaryTree {
 
     return view;
   }
+
+  rhs_BFS(node) {
+    if (!node) return [];
+
+    const q = [node];
+    const view = [];
+
+    while (q.length) {
+      const length = q.length;
+      let count = 0;
+      let currNode;
+
+      while (count < length) {
+        currNode = q.shift();
+
+        if (currNode.left) {
+          q.push(currNode.left);
+        }
+
+        if (currNode.right) {
+          q.push(currNode.right);
+        }
+
+        count++;
+      }
+      view.push(currNode);
+    }
+
+    return view;
+  }
 }
