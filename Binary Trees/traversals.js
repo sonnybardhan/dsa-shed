@@ -30,6 +30,11 @@ class BinaryTree {
     return Math.max(leftCount, rightCount);
   }
 
+  maxDepth2(node) {
+    if (!node) return 0;
+    return 1 + Math.max(this.maxDepth2(node.left), this.maxDepth2(node.right));
+  }
+
   levelOrder(node) {
     if (!node) return [[]];
     const q = [node];
@@ -157,6 +162,26 @@ class BinaryTree {
         count++;
       }
       view.push(rightMost);
+    }
+
+    return view;
+  }
+
+  rightSideView_DFS(node, view = [], level = 0) {
+    //preorder NRL (adjusted, swapping R with L)
+
+    if (!node) return view;
+
+    if (level >= view.length) {
+      view.push(node.val);
+    }
+
+    if (node.right) {
+      this.rightSideView_DFS(node.right, view, level + 1);
+    }
+
+    if (node.left) {
+      this.rightSideView_DFS(node.left, view, level + 1);
     }
 
     return view;
